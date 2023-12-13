@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MobileHub", "MobileHub", "{89784FC6-29E1-4565-87E6-1C513A0B9738}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileHub", "MobileHub\MobileHub.csproj", "{BFFFC626-E992-4940-AB53-46E56413353F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFFFC626-E992-4940-AB53-46E56413353F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFFC626-E992-4940-AB53-46E56413353F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFFC626-E992-4940-AB53-46E56413353F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFFC626-E992-4940-AB53-46E56413353F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFFFC626-E992-4940-AB53-46E56413353F} = {89784FC6-29E1-4565-87E6-1C513A0B9738}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E68785E3-060A-4A18-90F4-AA84ABB4B3E3}
+	EndGlobalSection
+EndGlobal
