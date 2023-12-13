@@ -1,10 +1,8 @@
-import { View } from "react-native";
+import HomeScreen from "../components/HomeScreen";
 
 const Index = () => {
     return (
-        <View>
-
-        </View>
+        <HomeScreen />
     );
 }
 
