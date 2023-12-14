@@ -1,9 +1,7 @@
 import HomeScreen from "../components/HomeScreen";
 
 const Index = () => {
-    return (
-        <HomeScreen />
-    );
-}
+  return <HomeScreen />;
+};
 
 export default Index;
