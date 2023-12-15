@@ -36,7 +36,7 @@ namespace MobileHub.DataAnnotations
                 var ucnDomains = new List<string> { "ucn.cl", "alumnos.ucn.cl", "disc.ucn.cl", "ce.ucn.cl" };
                 return ucnDomains.Contains(emailDomain);
 
-            } catch (Exception e) {
+            } catch (Exception) {
                 return false;
             }
         }
