@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using MobileHub.Common;
 
 namespace MobileHub.DataAnnotations
 {
@@ -34,7 +33,8 @@ namespace MobileHub.DataAnnotations
 
             try {
                 var emailDomain = email.Split('@')[1];
-                return RegularExpressions.UCNEmailDomainRegex().IsMatch(emailDomain);
+                var ucnDomains = new List<string> { "ucn.cl", "alumnos.ucn.cl", "disc.ucn.cl", "ce.ucn.cl" };
+                return ucnDomains.Contains(emailDomain);
 
             } catch (Exception e) {
                 return false;
