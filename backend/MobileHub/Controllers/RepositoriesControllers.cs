@@ -12,7 +12,6 @@ namespace MobileHub.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Repository>>> Get()
         {
-            Env.Load();
             var client = new GitHubClient(new ProductHeaderValue("MobileHub"));
             var myToken = Env.GetString("GITHUB_ACCESS_TOKEN");
             client.Credentials = new Credentials(myToken);
@@ -31,7 +30,6 @@ namespace MobileHub.Controllers
         [HttpGet]
         public async Task<ActionResult<List<GitHubCommit>>> Get()
         {
-            Env.Load();
             var client = new GitHubClient(new ProductHeaderValue("MobileHub"));
             var myToken = Env.GetString("GITHUB_ACCESS_TOKEN");
             client.Credentials = new Credentials(myToken);
