@@ -115,9 +115,17 @@ const EditProfile = () => {
         );
     }
 
-    const updateProfile = () => {}
+    const updateProfile = () => {
+        console.log("Update profile");
+    }
 
-    const updatePassword = () => {}
+    const updatePassword = () => {
+        console.log("Update password");
+    }
+
+    const clearChanges = () => {
+        console.log("Clear changes");
+    }
 
     const editInfo = () => {
         return(
@@ -222,6 +230,12 @@ const EditProfile = () => {
             <SafeAreaView style={styles.container}>
                 {optionsButtons()}
                 {editOption ? editInfo() : editPassword()}
+                <Button
+                    mode="contained"
+                    onPress={() => clearChanges}
+                >
+                Cancelar
+                </Button>
             </SafeAreaView>
         </>
     );
