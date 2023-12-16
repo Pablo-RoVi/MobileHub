@@ -5,6 +5,7 @@ import { Repository } from '../../models/Respository';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
+import Navbar from './Navbar';
 
 const styles = StyleSheet.create({
     container: {
@@ -44,7 +45,7 @@ const HomeScreen = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(url)
+        axios.get("url")
         .then((response) => {
             setRepositories(response.data);
         })
@@ -65,37 +66,40 @@ const HomeScreen = () => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
-            <Text variant={"displaySmall"}>Mis Repositorios</Text>
-            <ScrollView style={styles.scrollView}>
-                {repositories.map((repository) => (
-                    <Card style={styles.card} key={repository.name}>
-                        <Card.Title 
-                            title={repository.name} 
-                            titleVariant={"headlineSmall"}
-                        />
-                        <Card.Content>
-                            <Text variant={"bodyMedium"}>
-                                Creado el: {repository.createdAt.split("T")[0]}
-                            </Text>
-                            <Text variant={"bodyMedium"}>
-                                Actualizado el: {repository.updatedAt.split("T")[0]}
-                            </Text>
-                            <Text variant={"bodyMedium"}>
-                                Commits: {repository.commitsAmout}
-                            </Text>
-                        </Card.Content>
-                        <Card.Actions>
-                            <Button
-                                onPress={() => console.log("Ver más pressed")}
-                                mode={"contained"}
-                            >Ver más
-                            </Button>
-                        </Card.Actions>
-                    </Card>
-                ))}
-            </ScrollView>
-        </SafeAreaView>
+        <>
+            <Navbar />
+            <SafeAreaView style={styles.container}>
+                <Text variant={"displaySmall"}>Mis Repositorios</Text>
+                <ScrollView style={styles.scrollView}>
+                    {repositories.map((repository) => (
+                        <Card style={styles.card} key={repository.name}>
+                            <Card.Title 
+                                title={repository.name} 
+                                titleVariant={"headlineSmall"}
+                            />
+                            <Card.Content>
+                                <Text variant={"bodyMedium"}>
+                                    Creado el: {repository.createdAt.split("T")[0]}
+                                </Text>
+                                <Text variant={"bodyMedium"}>
+                                    Actualizado el: {repository.updatedAt.split("T")[0]}
+                                </Text>
+                                <Text variant={"bodyMedium"}>
+                                    Commits: {repository.commitsAmout}
+                                </Text>
+                            </Card.Content>
+                            <Card.Actions>
+                                <Button
+                                    onPress={() => console.log("Ver más pressed")}
+                                    mode={"contained"}
+                                >Ver más
+                                </Button>
+                            </Card.Actions>
+                        </Card>
+                    ))}
+                </ScrollView>
+            </SafeAreaView>
+        </>
     );
 }
 
