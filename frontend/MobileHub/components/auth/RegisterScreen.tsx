@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, HelperText, Text, TextInput } from "react-native-paper";
 import { Link } from "expo-router";
+import RegularExpressions from "../../constants/RegularExpressions";
+import axios from "axios";
 
 const styles = StyleSheet.create({
   container: {
@@ -27,24 +29,87 @@ const RegisterScreen = () => {
   const [birthYear, setBirthYear] = useState("");
   const [rut, setRut] = useState("");
 
+  const [emailError, setEmailError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [birthYearError, setBirthYearError] = useState(false);
+  const [rutError, setRutError] = useState(false);
+  const [validForm, setValidForm] = useState(false);
+
   const handleEmailChange = (text: string) => {
+    if (!RegularExpressions.emailRegex.test(text)) {
+      setEmailError(true);
+    }
+    else {
+      setEmailError(false);
+    }
     setEmail(text);
   };
 
   const handleNameChange = (text: string) => {
+    if (!RegularExpressions.nameRegex.test(text)) {
+      setNameError(true);
+    }
+    else {
+      setNameError(false);
+    }
     setName(text);
   };
 
   const handleBirthYearChange = (text: string) => {
+    if (!RegularExpressions.birthYearRegex.test(text)) {
+      setBirthYearError(true);
+    }
+    else {
+      setBirthYearError(false);
+    }
+
+    const currentYear = new Date().getFullYear();
+
+    const yearValue = parseInt(text, 10);
+    if (isNaN(yearValue) || yearValue > currentYear || yearValue < 1900) {
+      setBirthYearError(true);
+    } else {
+      setBirthYearError(false);
+    }
+
     setBirthYear(text);
   };
 
   const handleRutChange = (text: string) => {
+    if (!RegularExpressions.rutRegex.test(text)) {
+      setRutError(true);
+    }
+    else {
+      setRutError(false);
+    }
     setRut(text);
   };
 
   const handleSubmit = () => {
-    console.log("Submitted");
+    if (emailError || nameError || birthYearError || rutError) {
+      return;
+    }
+    sendData(email, name, birthYear, rut);
+  }
+
+  const sendData = (email: string, name: string, birthYear: string, rut:string) => {
+    
+    const url = "http://192.168.0.8:5071/users";
+
+    const data = {
+      email: email,
+      name: name,
+      birthYear: birthYear,
+      rut: rut
+    };
+
+    axios.post(url, data).then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {});
   }
 
   return (
@@ -59,6 +124,7 @@ const RegisterScreen = () => {
         value={email}
         onChangeText={handleEmailChange}
         mode={"outlined"}
+        error={emailError}
       />
       <TextInput 
         style={styles.textInput} 
@@ -68,6 +134,7 @@ const RegisterScreen = () => {
         value={name}
         onChangeText={handleNameChange}
         mode={"outlined"}
+        error={nameError}
       />
       <TextInput 
         style={styles.textInput} 
@@ -77,6 +144,8 @@ const RegisterScreen = () => {
         value={birthYear}
         onChangeText={handleBirthYearChange}
         mode={"outlined"}
+        keyboardType="numeric"
+        error={birthYearError}
       />
       <TextInput 
         style={styles.textInput} 
@@ -86,6 +155,7 @@ const RegisterScreen = () => {
         value={rut}
         onChangeText={handleRutChange}
         mode={"outlined"}
+        error={rutError}
       />
       <HelperText type="error" visible={false}>
         Credenciales inválidas
