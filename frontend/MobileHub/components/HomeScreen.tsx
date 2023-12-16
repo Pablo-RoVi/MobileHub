@@ -37,13 +37,15 @@ const HomeScreen = () => {
             Iniciar Sesión
         </Button>
       </Link>
-      <Button
-        mode="outlined"
-        onPress={() => console.log("Register")}
-        style={style.button}
-      >
-        Registrarse
-      </Button>
+      <Link href="/auth/register" asChild>
+        <Button
+          mode="outlined"
+          onPress={() => console.log("Register")}
+          style={style.button}
+        >
+          Registrarse
+        </Button>
+      </Link>
     </SafeAreaView>
   );
 };
