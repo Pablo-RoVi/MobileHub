@@ -122,7 +122,7 @@ const EditProfile = () => {
     const editInfo = () => {
         return(
             <>
-                <Text>Información personal</Text>
+                <Text variant="displaySmall">Información personal</Text>
                 <TextInput 
                     style={styles.textInput} 
                     label={"Correo electrónico"} 
@@ -168,7 +168,7 @@ const EditProfile = () => {
     const editPassword = () => {
         return(
             <>
-                <Text>Contraseña</Text>
+                <Text variant="displaySmall">Contraseña</Text>
                 <TextInput 
                     style={styles.textInput}
                     secureTextEntry={hidePassword} 
@@ -180,10 +180,10 @@ const EditProfile = () => {
                     onChangeText={handlePasswordChange}
                     mode={"outlined"}
                     right={
-                    <TextInput.Icon 
-                        icon={hidePassword ? "eye" : "eye-off"} 
-                        onPress={handleHidePassword}
-                    />
+                        <TextInput.Icon 
+                            icon={hidePassword ? "eye" : "eye-off"} 
+                            onPress={handleHidePassword}
+                        />
                     }
                 />
                 <TextInput 
@@ -197,10 +197,10 @@ const EditProfile = () => {
                     onChangeText={handleNewPasswordChange}
                     mode={"outlined"}
                     right={
-                    <TextInput.Icon 
-                        icon={hideNewPassword ? "eye" : "eye-off"} 
-                        onPress={handleHideNewPassword}
-                    />
+                        <TextInput.Icon 
+                            icon={hideNewPassword ? "eye" : "eye-off"} 
+                            onPress={handleHideNewPassword}
+                        />
                     }
                 />
                 <Button
