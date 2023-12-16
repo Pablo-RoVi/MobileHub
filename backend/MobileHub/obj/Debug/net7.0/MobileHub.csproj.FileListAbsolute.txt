@@ -5,8 +5,11 @@ C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarroll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\MobileHub.runtimeconfig.json
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\MobileHub.dll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\MobileHub.pdb
+C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\DotNetEnv.dll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\Octokit.dll
+C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\Sprache.dll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -31,6 +34,3 @@ C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarroll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\obj\Debug\net7.0\MobileHub.pdb
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\obj\Debug\net7.0\MobileHub.genruntimeconfig.cache
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\obj\Debug\net7.0\ref\MobileHub.dll
-C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\Octokit.dll
-C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\DotNetEnv.dll
-C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\Sprache.dll
