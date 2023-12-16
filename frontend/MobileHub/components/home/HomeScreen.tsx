@@ -2,6 +2,7 @@ import { ActivityIndicator, Button, Card, Text } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native';
 import { Repository } from '../../models/Respository';
+import { Commit } from "../../models/Commit";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -39,13 +40,15 @@ const styles = StyleSheet.create({
 const HomeScreen = () => {
 
     const [repositories, setRepositories] = useState<Repository[]>([]);
+    const [commits, setCommits] = useState<Commit[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     
-    const url = "http://192.168.0.8:5071/repositories"
+    const urlRepositories = "http://192.168.0.11:5071/repositories"
+    const urlCommits = "http://192.168.0.11:5071/commits"
 
     useEffect(() => {
         setLoading(true);
-        axios.get("url")
+        axios.get(urlRepositories)
         .then((response) => {
             setRepositories(response.data);
         })
