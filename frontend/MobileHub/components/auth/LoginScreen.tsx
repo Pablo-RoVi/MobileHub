@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, HelperText, Text, TextInput } from "react-native-paper";
+import { Link } from "expo-router";
 
 const styles = StyleSheet.create({
   container: {
@@ -74,9 +75,11 @@ const LoginScreen = () => {
       <HelperText type="error" visible={false}>
         Credenciales inválidas
       </HelperText>
-      <Button style={styles.button} mode="contained" onPress={handleSubmit}>
-        Iniciar Sesión
-      </Button>
+      <Link href="/home/" asChild>
+        <Button style={styles.button} mode="contained" onPress={handleSubmit}>
+          Iniciar Sesión
+        </Button>
+      </Link>
     </SafeAreaView>
   );
 };
