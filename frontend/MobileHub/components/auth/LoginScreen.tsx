@@ -75,7 +75,7 @@ const LoginScreen = () => {
       <HelperText type="error" visible={false}>
         Credenciales inválidas
       </HelperText>
-      <Link href="/home/" asChild>
+      <Link href="/home/" asChild replace={true}>
         <Button style={styles.button} mode="contained" onPress={handleSubmit}>
           Iniciar Sesión
         </Button>
