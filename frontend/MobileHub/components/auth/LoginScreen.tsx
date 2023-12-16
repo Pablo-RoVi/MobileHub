@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [hidePassword, sethidePassword] = useState(true);
+  const [hidePassword, setHidePassword] = useState(true);
 
   const handleEmailChange = (text: string) => {
     setEmail(text);
@@ -35,7 +35,7 @@ const LoginScreen = () => {
   };
 
   const handleHidePassword = () => {
-    sethidePassword(!hidePassword);
+    setHidePassword(!hidePassword);
   };
 
   const handleSubmit = () => {

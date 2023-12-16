@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const handleOptionPress = (option: string) => {
     if (option === 'Cerrar sesión') {
-        return "/"
+        
     }
   }
 
@@ -41,7 +41,7 @@ const Navbar = () => {
         anchor={{ x: 0, y: 0 }}
       >
         {options.map((option) => (
-            <Link href={option == "Cerrar sesión" ? "/" : "/home/editprofile"} asChild>
+            <Link href={option == "Editar perfil" ? "/home/editprofile" : "/"} asChild>
                 <Menu.Item 
                     key={option} 
                     onPress={() => {handleOptionPress(option)}} 

@@ -9,20 +9,20 @@ import Navbar from './Navbar';
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      padding: 20,
-      paddingTop: 0,
-      alignItems: "center",
-      gap: 20,
+        flex: 1,
+        padding: 20,
+        paddingTop: 0,
+        alignItems: "center",
+        gap: 20,
     },
     loadingContainer: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
     button: {
-      width: "100%",
-      marginTop: 20,
+        width: "100%",
+        marginTop: 20,
     },
     card: {
         width: "100%",
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         margin: 0,
         padding: 0,
     }
-  });
+});
 
 const HomeScreen = () => {
 
