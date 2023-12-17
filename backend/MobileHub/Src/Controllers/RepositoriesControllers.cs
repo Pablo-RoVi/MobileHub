@@ -17,7 +17,7 @@ namespace MobileHub.Controllers
             var myToken = Env.GetString("GITHUB_ACCESS_TOKEN");
             client.Credentials = new Credentials(myToken);
             
-            var repositories = await client.Repository.GetAllForUser("Dizkm8");
+            var repositories = await client.Repository.GetAllForUser(Env.GetString("GITHUB_ACCESS_USER"));
 
             repositories = repositories.OrderByDescending(x => x.UpdatedAt).ToList();
 
@@ -42,7 +42,7 @@ namespace MobileHub.Controllers
 
         private async Task<int> GetCommitsAmountByRepository(GitHubClient client, string repoName)
         {
-            var commits = await client.Repository.Commit.GetAll("Dizkm8", repoName);
+            var commits = await client.Repository.Commit.GetAll(Env.GetString("GITHUB_ACCESS_USER"), repoName);
 
             if (commits is null) return 0;
         

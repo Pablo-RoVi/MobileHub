@@ -16,7 +16,7 @@ namespace MobileHub.Controllers
             var myToken = Env.GetString("GITHUB_ACCESS_TOKEN");
             client.Credentials = new Credentials(myToken);
             
-            var commits = await client.Repository.Commit.GetAll("Dizkm8", repositoryName);
+            var commits = await client.Repository.Commit.GetAll(Env.GetString("GITHUB_ACCESS_USER"), repositoryName);
 
             var mappedCommits = commits.Select(c => new CommitDTO
             {
