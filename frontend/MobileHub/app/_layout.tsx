@@ -1,7 +1,15 @@
+/**
+ * File: HomeLayout.js
+ * Description: React Native component representing the layout for the Home screen.
+ * This layout includes the SafeAreaProvider, PaperProvider, and Slot components.
+ */
+
+import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { PaperProvider, MD3LightTheme as Theme } from "react-native-paper";
 import { Slot } from "expo-router";
 
+// Define a custom theme for the PaperProvider.
 const theme = {
   ...Theme,
   colors: {
@@ -11,6 +19,11 @@ const theme = {
   },
 };
 
+/**
+ * Component: HomeLayout
+ * Description: Represents the layout for the Home screen.
+ * It includes the SafeAreaProvider, PaperProvider with a custom theme, and Slot component.
+ */
 const HomeLayout = () => {
   return (
     <PaperProvider theme={theme}>
@@ -21,4 +34,5 @@ const HomeLayout = () => {
   );
 };
 
+// Export the HomeLayout component for use in other parts of the application.
 export default HomeLayout;
