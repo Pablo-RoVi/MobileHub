@@ -62,7 +62,7 @@ const HomeScreen = () => {
   const [commits, setCommits] = useState<Commit[]>([]);
   const [repositoyCommitName, setRepositoryCommitName] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
   const hideDialog = () => setVisible(false);
 

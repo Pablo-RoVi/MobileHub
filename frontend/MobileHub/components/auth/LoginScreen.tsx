@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, HelperText, Text, TextInput } from "react-native-paper";
 import { Link } from "expo-router";
 import axios from "axios";
-import Endpoints from '../api/Endpoints';
+import Endpoints from "../api/Endpoints";
 
 const styles = StyleSheet.create({
   container: {
@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
 });
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [hidePassword, setHidePassword] = useState(true);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [hidePassword, setHidePassword] = useState<boolean>(true);
 
   const handleEmailChange = (text: string) => {
     setEmail(text);
@@ -42,29 +42,30 @@ const LoginScreen = () => {
 
   const handleSubmit = () => {
     sendData(email, password);
-  }
+  };
 
   const sendData = (email: string, password: string) => {
-
     const data = {
       email: email,
-      password: password
+      password: password,
     };
 
-    axios.post(`${Endpoints.urlAuth}/login`, data)
-    .then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    });
-  }
+    axios
+      .post(`${Endpoints.urlAuth}/login`, data)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <Text variant="displayMedium">Iniciar Sesión</Text>
-      <TextInput 
-        style={styles.textInput} 
-        label={"Correo electrónico"} 
+      <TextInput
+        style={styles.textInput}
+        label={"Correo electrónico"}
         placeholder={"tu.correo@ucn.cl"}
         placeholderTextColor={"#999"}
         autoComplete={"email"}
@@ -72,10 +73,10 @@ const LoginScreen = () => {
         onChangeText={handleEmailChange}
         mode={"outlined"}
       />
-      <TextInput 
+      <TextInput
         style={styles.textInput}
-        secureTextEntry={hidePassword} 
-        label={"Contraseña"} 
+        secureTextEntry={hidePassword}
+        label={"Contraseña"}
         placeholder={hidePassword ? "***********" : "Tu contraseña"}
         placeholderTextColor={"#999"}
         autoComplete={"password"}
@@ -83,8 +84,8 @@ const LoginScreen = () => {
         onChangeText={handlePasswordChange}
         mode={"outlined"}
         right={
-          <TextInput.Icon 
-            icon={hidePassword ? "eye" : "eye-off"} 
+          <TextInput.Icon
+            icon={hidePassword ? "eye" : "eye-off"}
             onPress={handleHidePassword}
           />
         }

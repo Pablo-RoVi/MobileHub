@@ -4,10 +4,10 @@
  */
 
 // Primary color for the application
-const primaryOrange = '#fcaf43';
+const primaryOrange = "#fcaf43";
 
 // White color
-const white = '#ffffff';
+const white = "#ffffff";
 
 // Object containing color constants
 const colors = {
