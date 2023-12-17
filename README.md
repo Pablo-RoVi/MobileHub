@@ -28,7 +28,7 @@ These instructions will help you set up and run the project on your local machin
 ## Start backend
 1. Restore dependencies
    ```bash
-   cd MobileHub/backend/MobileHub
+   cd backend/MobileHub
    dotnet restore
    ```
 
