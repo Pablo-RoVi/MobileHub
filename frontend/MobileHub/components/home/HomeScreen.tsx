@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ScrollView } from "react-native-gesture-handler";
 import Navbar from "./Navbar";
+import Endpoints from "../../constants/Endpoints";
 
 const styles = StyleSheet.create({
   container: {
@@ -61,7 +62,6 @@ const HomeScreen = () => {
   const [commits, setCommits] = useState<Commit[]>([]);
   const [repositoyCommitName, setRepositoryCommitName] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const url = "http://192.168.0.8:5071";
   const [visible, setVisible] = React.useState(false);
 
   const hideDialog = () => setVisible(false);
@@ -69,7 +69,7 @@ const HomeScreen = () => {
   const getCommits = (repositoryName: string) => {
     setLoading(true);
     axios
-      .get(`${url}/commits/${repositoryName}`)
+      .get(`${Endpoints.url}/commits/${repositoryName}`)
       .then((response) => {
         setCommits(response.data);
         setRepositoryCommitName(repositoryName);
@@ -151,7 +151,7 @@ const HomeScreen = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${url}/repositories`)
+      .get(`${Endpoints.url}/repositories`)
       .then((response) => {
         setRepositories(response.data);
       })
