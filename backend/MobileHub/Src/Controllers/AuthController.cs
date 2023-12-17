@@ -28,7 +28,7 @@ namespace MobileHub.Src.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<string>> Register(RegisterDTO registerDto)
+        public async Task<ActionResult<LoggedUserDTO>> Register(RegisterDTO registerDto)
         {
             var salt = BCrypt.Net.BCrypt.GenerateSalt(12);
 
@@ -49,13 +49,22 @@ namespace MobileHub.Src.Controllers
 
             var token = CreateToken(createdUser);
 
-            return token;
+            var loggedUser = new LoggedUserDTO()
+            {
+                Token = token,
+                Email = createdUser.Email,
+                Rut = createdUser.Rut,
+                BirthYear = createdUser.BirthYear,
+                FullName = createdUser.FullName
+            };
+
+            return loggedUser;
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(LoginDTO loginDto)
+        public async Task<ActionResult<LoggedUserDTO>> Login(LoginDTO loginDto)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginDto.Email);
+            var user = (await _context.Users.FirstOrDefaultAsync(u => u.Email == loginDto.Email));
 
             if (user is null) return BadRequest("Invalid Credentials");
 
@@ -64,8 +73,17 @@ namespace MobileHub.Src.Controllers
             if(!result) return BadRequest("Invalid Credentials");
 
             var token = CreateToken(user);
-            
-            return token;
+
+            var loggedUser = new LoggedUserDTO()
+            {
+                Token = token,
+                Email = user.Email,
+                Rut = user.Rut,
+                BirthYear = user.BirthYear,
+                FullName = user.FullName
+            };
+
+            return loggedUser;
         }
 
         private string CreateToken(User user)
