@@ -1,3 +1,8 @@
+/**
+ * @file LoginScreen.tsx
+ * @description Login screen of the application.
+ * This screen allows users to log in by entering their email and password.
+ */
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -7,6 +12,9 @@ import Endpoints from "../../constants/Endpoints";
 import { useAuth } from "../../context/AuthContext";
 import { router } from "expo-router";
 
+/**
+ * Styles specific to this screen.
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -24,29 +32,55 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * Functional component representing the login screen.
+ * Allows users to enter their email and password to log in.
+ */
 const LoginScreen = () => {
+  // Local states for email, password, password visibility, and login error handling.
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [hidePassword, setHidePassword] = useState<boolean>(true);
   const [loginError, setLoginError] = useState<boolean>(false);
+
+  // Context method to perform the login action.
   const { login } = useAuth();
 
+  /**
+   * Change handler for the email field.
+   * @param {string} text - Text from the email field.
+   */
   const handleEmailChange = (text: string) => {
     setEmail(text);
   };
 
+  /**
+   * Change handler for the password field.
+   * @param {string} text - Text from the password field.
+   */
   const handlePasswordChange = (text: string) => {
     setPassword(text);
   };
 
+  /**
+   * Toggle password visibility.
+   */
   const handleHidePassword = () => {
     setHidePassword(!hidePassword);
   };
 
+  /**
+   * Form submission handler for the login form.
+   */
   const handleSubmit = () => {
     sendData(email, password);
   };
 
+  /**
+   * Send login data to the server.
+   * @param {string} email - User's email.
+   * @param {string} password - User's password.
+   */
   const sendData = (email: string, password: string) => {
     const data = {
       email: email,
@@ -65,6 +99,9 @@ const LoginScreen = () => {
       });
   };
 
+  /**
+   * Render the login screen component.
+   */
   return (
     <SafeAreaView style={styles.container}>
       <Text variant="displayMedium">Iniciar Sesión</Text>
@@ -105,4 +142,5 @@ const LoginScreen = () => {
   );
 };
 
+// Export the component for use in other parts of the application.
 export default LoginScreen;
