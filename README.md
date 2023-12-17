@@ -32,12 +32,18 @@ These instructions will help you set up and run the project on your local machin
    dotnet restore
    ```
 
-2. Configure .env
+2. Configure .env and appsettings.json
    - Change .env.example to .env and put your GitHub Personal Access Tokens, any GitHub user and your IPv4 Direction instead localhost
    ```bash
     GITHUB_ACCESS_TOKEN=YOUR_GITHUB_ACCESS_TOKEN
     GITHUB_ACCESS_USER=YOUR_GITHUB_ACCESS_USER
     LOCAL_IP=http://localhost:8081
+   ```
+   - Change appsettings.example.json to appsettings.json and put your 256bits ultra secret token
+   ```bash
+      "AppSettings": {
+         "Token": "your_ultra_secret_token"
+      }
    ```
 
 3. Make the migrations
