@@ -9,6 +9,9 @@ using MobileHub.Src.Data;
 
 namespace MobileHub.Src.Data.Migrations
 {
+    /// <summary>
+    /// Migration class for the UserEntityAdd migration.
+    /// </summary>
     [DbContext(typeof(DataContext))]
     [Migration("20231217060023_UserEntityAdd")]
     partial class UserEntityAdd
@@ -17,35 +20,40 @@ namespace MobileHub.Src.Data.Migrations
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
+            // Set the product version for the model.
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
 
+            // Define the User entity in the model.
             modelBuilder.Entity("MobileHub.Src.Models.User", b =>
                 {
+                    // Configure properties for the User entity.
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER"); // Id property with auto-increment and type INTEGER.
 
                     b.Property<int>("BirthYear")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER"); // BirthYear property with type INTEGER.
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT"); // Email property with TEXT type and non-nullable.
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT"); // FullName property with TEXT type and non-nullable.
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT"); // Password property with TEXT type and non-nullable.
 
                     b.Property<string>("Rut")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT"); // Rut property with TEXT type and non-nullable.
 
+                    // Set the primary key constraint for the Users table.
                     b.HasKey("Id");
 
+                    // Map the User entity to the "Users" table in the database.
                     b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
