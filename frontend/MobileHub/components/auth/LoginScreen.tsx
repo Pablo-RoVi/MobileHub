@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, HelperText, Text, TextInput } from "react-native-paper";
 import { Link } from "expo-router";
 import axios from "axios";
-import Endpoints from '../../constants/Endpoints';
+import Endpoints from '../api/Endpoints';
 
 const styles = StyleSheet.create({
   container: {
