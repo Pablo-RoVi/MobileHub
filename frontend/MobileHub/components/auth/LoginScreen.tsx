@@ -41,10 +41,18 @@ const LoginScreen = () => {
   };
 
   const handleSubmit = () => {
-    axios.post(`${Endpoints.urlAuth}/login`, {
+    sendData(email, password);
+  }
+
+  const sendData = (email: string, password: string) => {
+
+    const data = {
       email: email,
       password: password
-    }).then(response => {
+    };
+
+    axios.post(`${Endpoints.urlAuth}/login`, data)
+    .then(response => {
       console.log(response.data);
     }).catch(error => {
       console.log(error);

@@ -5,6 +5,7 @@ import { Button, HelperText, Text, TextInput } from "react-native-paper";
 import { Link } from "expo-router";
 import RegularExpressions from "../../constants/RegularExpressions";
 import axios from "axios";
+import Endpoints from '../../constants/Endpoints';
 
 const styles = StyleSheet.create({
   container: {
@@ -92,18 +93,16 @@ const RegisterScreen = () => {
     sendData(email, name, birthYear, rut);
   }
 
-  const sendData = (email: string, name: string, birthYear: string, rut:string) => {
-    
-    const url = "http://192.168.0.8:5071/users";
-
+  const sendData = (email: string, fullName: string, birthYear: string, rut:string) => {
+  
     const data = {
       email: email,
-      name: name,
+      rut: rut,
       birthYear: birthYear,
-      rut: rut
+      fullName: fullName
     };
 
-    axios.post(url, data).then((response) => {
+    axios.post(`${Endpoints.urlAuth}/register`, data).then((response) => {
       console.log(response.data);
     })
     .catch((error) => {
