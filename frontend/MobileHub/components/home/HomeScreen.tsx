@@ -1,3 +1,7 @@
+/**
+ * `HomeScreen` component displays a list of repositories and their associated commits.
+ * It fetches data from an API endpoint and renders the information in a user-friendly manner.
+ */
 import {
   ActivityIndicator,
   Button,
@@ -15,6 +19,10 @@ import { ScrollView } from "react-native-gesture-handler";
 import Navbar from "./Navbar";
 import Endpoints from "../../constants/Endpoints";
 
+/**
+ * Styles for the HomeScreen component.
+ * @type {object} - CSS HomeScreen properties.
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -57,6 +65,10 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * HomeScreen component renders a list of repositories and commits.
+ * @returns JSX element containing the HomeScreen component.
+ */
 const HomeScreen = () => {
   const [repositories, setRepositories] = useState<Repository[]>([]);
   const [commits, setCommits] = useState<Commit[]>([]);
@@ -64,8 +76,15 @@ const HomeScreen = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState(false);
 
+  /**
+   * Hides the commit dialog.
+   */
   const hideDialog = () => setVisible(false);
 
+  /**
+   * Fetches commits for a specific repository.
+   * @param {string} repositoryName - The name of the repository.
+   */
   const getCommits = (repositoryName: string) => {
     setLoading(true);
     axios
@@ -82,6 +101,10 @@ const HomeScreen = () => {
       });
   };
 
+  /**
+   * Renders a list of user repositories.
+   * @returns JSX element containing the repository list.
+   */
   const repositoryList = () => {
     return (
       <>
@@ -122,6 +145,10 @@ const HomeScreen = () => {
     );
   };
 
+  /**
+   * Renders a list of commits for a specific repository in a dialog.
+   * @returns JSX element containing the commit list dialog.
+   */
   const commitList = () => {
     return (
       <Dialog visible={visible} onDismiss={hideDialog}>
@@ -148,6 +175,9 @@ const HomeScreen = () => {
     );
   };
 
+  /**
+   * Fetches the user repositories on component mount.
+   */
   useEffect(() => {
     setLoading(true);
     axios
@@ -163,6 +193,10 @@ const HomeScreen = () => {
       });
   }, []);
 
+  /**
+   * Renders loading indicator while data is being fetched.
+   * Renders the main content when data has been loaded.
+   */
   if (loading) {
     return (
       <SafeAreaView style={styles.container}>
@@ -186,4 +220,8 @@ const HomeScreen = () => {
   );
 };
 
+/**
+ * Export the component as the default object.
+ * This is the object that is imported when using `import` syntax.
+ */
 export default HomeScreen;

@@ -11,10 +11,16 @@ import Colors from "../../constants/Colors";
 import { Link } from "expo-router";
 import { useAuth } from "../../context/AuthContext";
 
-// List of menu options
+/**
+ * Options for the menu.
+ * @type {string[]} - Array of strings representing the options for the menu.
+ */
 const options = ["Editar perfil", "Cerrar sesión"];
 
-// Styles for the component
+/**
+ * Styles for the Navbar component.
+ * @type {object} - CSS Navbar properties.
+ */
 const styles = StyleSheet.create({
   appbarHeader: {
     backgroundColor: Colors.primaryOrange,
@@ -30,14 +36,22 @@ const styles = StyleSheet.create({
  * It provides options to navigate within the application.
  */
 const Navbar = () => {
-  // State to manage menu visibility
+  /**
+   * State to control the visibility of the menu.
+   */
   const [menuVisible, setMenuVisible] = useState(false);
   const { logout } = useAuth();
 
-  // Function to open the menu
+  /**
+   * Function to open the menu.
+   * @returns JSX element containing the Navbar component.
+   */
   const openMenu = () => setMenuVisible(true);
 
-  // Function to close the menu
+  /**
+   * Function to close the menu.
+   * @returns JSX element containing the Navbar component.
+   */
   const closeMenu = () => setMenuVisible(false);
 
   // Function to handle option press and return the corresponding route
@@ -46,7 +60,11 @@ const Navbar = () => {
     return "/";
   };
 
-  // Function to return the corresponding route for an option
+  /**
+   * Function to return the corresponding route for each option.
+   * @param option - Option to be evaluated.
+   * @returns JSX element containing the Navbar component.
+   */
   const optionHref = (option: string) => {
     if (option === "Editar perfil") return "/home/editprofile";
     return "/";

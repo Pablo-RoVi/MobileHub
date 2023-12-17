@@ -10,7 +10,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, Text } from "react-native-paper";
 import { Link } from "expo-router";
 
-// Styles for the component
+/**
+ * Styles for the HomeScreen component.
+ * @type {object} - CSS HomeScreen properties.
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
