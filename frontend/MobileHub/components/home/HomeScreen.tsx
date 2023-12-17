@@ -101,7 +101,7 @@ const HomeScreen = () => {
                   Actualizado el: {repository.updatedAt.split("T")[0]}
                 </Text>
                 <Text variant={"bodyMedium"}>
-                  Commits: {repository.commitsAmout}
+                  Commits: {repository.commitsAmount}
                 </Text>
               </Card.Content>
               <Card.Actions>
