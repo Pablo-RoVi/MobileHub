@@ -42,7 +42,7 @@ const Navbar = () => {
 
   // Function to handle option press and return the corresponding route
   const handleOptionPress = (option: string) => {
-    if (option === "Cerrar Sesión") return logout();
+    if (option === "Cerrar sesión") return logout();
     return "/";
   };
 

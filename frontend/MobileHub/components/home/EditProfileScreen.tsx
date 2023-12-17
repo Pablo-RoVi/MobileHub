@@ -119,7 +119,14 @@ const EditProfile = () => {
   };
 
   const clearChanges = () => {
-    console.log("Clear changes");
+    setName(user?.fullName || "");
+    setEmail(user?.email || "");
+    setBirthYear(user?.birthYear.toString() || "");
+    setPassword("");
+    setNewPassword("");
+    setEmailError(false);
+    setNameError(false);
+    setBirthYearError(false);
   };
 
   useEffect(() => {
@@ -233,7 +240,7 @@ const EditProfile = () => {
       <SafeAreaView style={styles.container}>
         {optionsButtons()}
         {editOption ? editInfo() : editPassword()}
-        <Button mode="contained" onPress={() => clearChanges}>
+        <Button mode="contained" onPress={() => clearChanges()}>
           Cancelar
         </Button>
       </SafeAreaView>
