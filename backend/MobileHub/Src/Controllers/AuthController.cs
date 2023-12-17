@@ -1,21 +1,21 @@
 using MobileHub.Src.Data;
 using MobileHub.Src.DTOs;
 using MobileHub.Src.Models;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Text;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Security.Claims;
+using System.Text;
 using System;
 
 namespace MobileHub.Src.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly DataContext _context;
@@ -73,9 +73,6 @@ namespace MobileHub.Src.Controllers
             var claims = new List<Claim>
             {
                 new ("email", user.Email),
-                new ("rut", user.Rut),
-                new ("birthYear", user.BirthYear.ToString()),
-                new ("fullName", user.FullName)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
