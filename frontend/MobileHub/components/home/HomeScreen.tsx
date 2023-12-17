@@ -61,7 +61,6 @@ const HomeScreen = () => {
   const [commits, setCommits] = useState<Commit[]>([]);
   const [repositoyCommitName, setRepositoryCommitName] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-
   const url = "http://192.168.0.11:5071";
   const [visible, setVisible] = React.useState(false);
 
