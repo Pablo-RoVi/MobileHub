@@ -40,5 +40,6 @@ yarn-error.*
 expo-env.d.ts
 # @end expo-cli
 
-# Ignorar el archivo appsettings.json
+# local appsettings files
 appsettings.json
+appsettings.Developments.json

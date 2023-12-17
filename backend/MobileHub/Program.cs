@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MobileHub.Src.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +35,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuerSigningKey = true,
             ValidateIssuerSigningKey = true,
             ValidateAudience = true,
             ValidateIssuer = true,

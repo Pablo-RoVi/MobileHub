@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "BZ3X4vdX/jTgcJgjh+qJjW+rnlG/Lwv1juj3L9r/obmXpmvYGxCKduC8tsIAuqiYWIm5J1WbBVpwPGlCfyaDmA==",
+  "dgSpecHash": "yk8CGWsjgNCkfTet3+VbKsCo3SRYCdet+Td+6pg7IjbuGifCeCyHtToOpI/4o79Q4g/ekBvtZnKrvlrqp1/HfA==",
   "success": true,
   "projectFilePath": "C:\\Users\\pablo\\OneDrive\\Documentos\\Universidad\\Octavo semestre\\Int. al Desarrollo Web-Movil\\Talleres\\MobileHub\\backend\\MobileHub\\MobileHub.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pablo\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\dotnetenv\\2.5.0\\dotnetenv.2.5.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.11\\microsoft.aspnetcore.authentication.jwtbearer.7.0.11.nupkg.sha512",

@@ -1,22 +1,25 @@
 using System.ComponentModel.DataAnnotations;
 using MobileHub.DataAnnotations;
 
-namespace MobileHub.DTOs
+namespace MobileHub.Src.DTOs
 {
-    public class RegisterDto
+    public class RegisterDTO
     {
         [Required]
-        public string Email { get; set; } = null!;
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
 
         [Required]
         [Rut(ErrorMessage = "Rut is not valid")]
-        public string Rut { get; set; } = null!;
+        public string Rut { get; set; } = string.Empty;
         
         [Required]
         public int BirthYear { get; set; }
 
         [Required]
-        public string FullName { get; set; } = null!;
+        [MinLength(10)]
+        [MaxLength(150)]
+        public string FullName { get; set; } = string.Empty;
         
     }
 }

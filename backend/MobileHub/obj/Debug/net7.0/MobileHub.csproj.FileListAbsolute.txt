@@ -78,3 +78,4 @@ C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarroll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\pablo\OneDrive\Documentos\Universidad\Octavo semestre\Int. al Desarrollo Web-Movil\Talleres\MobileHub\backend\MobileHub\bin\Debug\net7.0\BCrypt.Net-Next.dll
