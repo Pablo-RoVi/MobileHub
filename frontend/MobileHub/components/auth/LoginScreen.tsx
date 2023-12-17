@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, HelperText, Text, TextInput } from "react-native-paper";
-import { Link } from "expo-router";
 import axios from "axios";
 import Endpoints from "../../constants/Endpoints";
 import { useAuth } from "../../context/AuthContext";
+import { router } from "expo-router";
 
 const styles = StyleSheet.create({
   container: {
@@ -56,7 +56,9 @@ const LoginScreen = () => {
     axios
       .post(`${Endpoints.urlAuth}/login`, data)
       .then((response) => {
+        setLoginError(false);
         login(response.data);
+        router.push("/home/");
       })
       .catch((error) => {
         setLoginError(true);

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, HelperText, Text, TextInput } from "react-native-paper";
-import { Link } from "expo-router";
 import RegularExpressions from "../../constants/RegularExpressions";
 import axios from "axios";
 import Endpoints from "../../constants/Endpoints";
 import { useAuth } from "../../context/AuthContext";
+import { router } from "expo-router";
 
 const styles = StyleSheet.create({
   container: {
@@ -107,7 +107,9 @@ const RegisterScreen = () => {
     axios
       .post(`${Endpoints.urlAuth}/register`, data)
       .then((response) => {
+        setRegisterError(false);
         login(response.data);
+        router.push("/home/");
       })
       .catch((error) => {
         setRegisterError(true);

@@ -10,6 +10,7 @@ import { StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 import { Link } from "expo-router";
 import { useAuth } from "../../context/AuthContext";
+import { router } from "expo-router";
 
 /**
  * Options for the menu.
@@ -56,8 +57,11 @@ const Navbar = () => {
 
   // Function to handle option press and return the corresponding route
   const handleOptionPress = (option: string) => {
-    if (option === "Cerrar sesión") return logout();
-    return "/";
+    if (option === "Cerrar sesión") {
+      logout();
+      router.push("/");
+    }
+    return "/home/editprofile";
   };
 
   /**

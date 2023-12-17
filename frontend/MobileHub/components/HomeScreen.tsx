@@ -38,16 +38,11 @@ const styles = StyleSheet.create({
  * It includes a welcome message, logo, and buttons to navigate to the login and register screens.
  */
 const HomeScreen = () => {
-  /**
-   * Get the user from the AuthContext.
-   * @type {object} - User object.
-   */
-  const { user } = useAuth();
   // Render the HomeScreen component
   return (
     <SafeAreaView style={styles.container}>
       {/* Welcome message */}
-      <Text variant="displayMedium">¡BIENVENID@ {user?.fullName}!</Text>
+      <Text variant="displayMedium">¡BIENVENID@!</Text>
 
       {/* Application logo */}
       <Image

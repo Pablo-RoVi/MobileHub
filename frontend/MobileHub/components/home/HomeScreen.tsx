@@ -18,6 +18,8 @@ import axios from "axios";
 import { ScrollView } from "react-native-gesture-handler";
 import Navbar from "./Navbar";
 import Endpoints from "../../constants/Endpoints";
+import { useNavigation } from "expo-router";
+import { useAuth } from "../../context/AuthContext";
 
 /**
  * Styles for the HomeScreen component.
@@ -75,6 +77,8 @@ const HomeScreen = () => {
   const [repositoyCommitName, setRepositoryCommitName] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState(false);
+  const { user } = useAuth();
+  const navigation = useNavigation();
 
   /**
    * Hides the commit dialog.
@@ -180,6 +184,9 @@ const HomeScreen = () => {
    */
   useEffect(() => {
     setLoading(true);
+    if (!user) {
+      navigation.goBack();
+    }
     axios
       .get(`${Endpoints.url}/repositories`)
       .then((response) => {
