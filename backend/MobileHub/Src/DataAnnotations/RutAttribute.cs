@@ -7,32 +7,49 @@ using System.Threading.Tasks;
 
 namespace MobileHub.DataAnnotations
 {
+    /// <summary>
+    /// Custom validation attribute for validating Chilean RUT (Rol Único Tributario) numbers.
+    /// </summary>
     public class RutAttribute : ValidationAttribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RutAttribute"/> class with a default error message.
+        /// </summary>
         public RutAttribute()
         {
             ErrorMessage = "Rut is not valid";
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RutAttribute"/> class with a custom error message.
+        /// </summary>
+        /// <param name="errorMessageAccessor">A function that returns the error message.</param>
         public RutAttribute(Func<string> errorMessageAccessor) : base(errorMessageAccessor)
         {
-
+            // This constructor allows providing a custom error message.
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RutAttribute"/> class with a specific error message.
+        /// </summary>
+        /// <param name="errorMessage">The error message to display.</param>
         public RutAttribute(string errorMessage) : base(errorMessage)
         {
-
+            // This constructor allows providing a specific error message.
         }
 
-        public override bool IsValid(object? value) {
-
+        /// <inheritdoc />
+        public override bool IsValid(object? value)
+        {
             if (!(value is string rut)) return false;
-            
+
+            // Use a regular expression to check if the RUT matches the expected format.
             var isValidRut = new Regex(@"^[0-9]{1,2}\.[0-9]{3}\.[0-9]{3}-[0-9kK]$").IsMatch(rut);
 
             if (!isValidRut) return false;
 
-            try {
+            try
+            {
                 // Remove any dots and hyphens from the input
                 rut = rut.Replace(".", "").Replace("-", "");
 
@@ -72,7 +89,9 @@ namespace MobileHub.DataAnnotations
 
                 // Check if the remainder matches the verifier digit
                 return remainder == verifier || (remainder == 10 && verifier == 0);
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 // Handle exceptions if necessary, but for validation purposes, returning false is sufficient.
                 return false;
             }
