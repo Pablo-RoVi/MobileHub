@@ -9,6 +9,7 @@ import { Appbar, Menu } from "react-native-paper";
 import { StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
 import { Link } from "expo-router";
+import { useAuth } from "../../context/AuthContext";
 
 // List of menu options
 const options = ["Editar perfil", "Cerrar sesión"];
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
 const Navbar = () => {
   // State to manage menu visibility
   const [menuVisible, setMenuVisible] = useState(false);
+  const { logout } = useAuth();
 
   // Function to open the menu
   const openMenu = () => setMenuVisible(true);
@@ -40,7 +42,7 @@ const Navbar = () => {
 
   // Function to handle option press and return the corresponding route
   const handleOptionPress = (option: string) => {
-    if (option === "Editar perfil") return "/home/editprofile";
+    if (option === "Cerrar Sesión") return logout();
     return "/";
   };
 

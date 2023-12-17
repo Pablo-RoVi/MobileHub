@@ -5,7 +5,8 @@ import { Button, HelperText, Text, TextInput } from "react-native-paper";
 import { Link } from "expo-router";
 import RegularExpressions from "../../constants/RegularExpressions";
 import axios from "axios";
-import Endpoints from "../api/Endpoints";
+import Endpoints from "../../constants/Endpoints";
+import { useAuth } from "../../context/AuthContext";
 
 const styles = StyleSheet.create({
   container: {
@@ -29,6 +30,7 @@ const RegisterScreen = () => {
   const [name, setName] = useState<string>("");
   const [birthYear, setBirthYear] = useState<string>("");
   const [rut, setRut] = useState<string>("");
+  const { login } = useAuth();
 
   const [emailError, setEmailError] = useState<boolean>(false);
   const [nameError, setNameError] = useState<boolean>(false);
@@ -106,6 +108,7 @@ const RegisterScreen = () => {
       .post(`${Endpoints.urlAuth}/register`, data)
       .then((response) => {
         console.log(response.data);
+        login(response.data);
       })
       .catch((error) => {
         console.log(error);

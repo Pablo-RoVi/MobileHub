@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ScrollView } from "react-native-gesture-handler";
 import Navbar from "./Navbar";
-import Endpoints from "../api/Endpoints";
+import Endpoints from "../../constants/Endpoints";
 
 const styles = StyleSheet.create({
   container: {

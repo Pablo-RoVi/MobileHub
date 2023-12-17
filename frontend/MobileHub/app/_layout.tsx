@@ -8,6 +8,7 @@ import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { PaperProvider, MD3LightTheme as Theme } from "react-native-paper";
 import { Slot } from "expo-router";
+import { AuthProvider } from "../context/AuthContext";
 
 // Define a custom theme for the PaperProvider.
 const theme = {
@@ -26,11 +27,13 @@ const theme = {
  */
 const HomeLayout = () => {
   return (
-    <PaperProvider theme={theme}>
-      <SafeAreaProvider>
-        <Slot />
-      </SafeAreaProvider>
-    </PaperProvider>
+    <AuthProvider>
+      <PaperProvider theme={theme}>
+        <SafeAreaProvider>
+          <Slot />
+        </SafeAreaProvider>
+      </PaperProvider>
+    </AuthProvider>
   );
 };
 

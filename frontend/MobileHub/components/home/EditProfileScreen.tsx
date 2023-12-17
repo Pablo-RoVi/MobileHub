@@ -1,11 +1,12 @@
 import { Text } from "react-native-paper";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet, View } from "react-native";
 import { Appbar, Button, TextInput } from "react-native-paper";
 import { router } from "expo-router";
 import colors from "../../constants/Colors";
 import RegularExpressions from "../../constants/RegularExpressions";
+import { useAuth } from "../../context/AuthContext";
 
 const styles = StyleSheet.create({
   container: {
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
 });
 
 const EditProfile = () => {
+  const { user } = useAuth();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [birthYear, setBirthYear] = useState<string>("");
@@ -119,6 +121,12 @@ const EditProfile = () => {
   const clearChanges = () => {
     console.log("Clear changes");
   };
+
+  useEffect(() => {
+    setName(user?.fullName || "");
+    setEmail(user?.email || "");
+    setBirthYear(user?.birthYear.toString() || "");
+  }, []);
 
   const editInfo = () => {
     return (

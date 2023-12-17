@@ -4,7 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, HelperText, Text, TextInput } from "react-native-paper";
 import { Link } from "expo-router";
 import axios from "axios";
-import Endpoints from "../api/Endpoints";
+import Endpoints from "../../constants/Endpoints";
+import { useAuth } from "../../context/AuthContext";
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +28,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [hidePassword, setHidePassword] = useState<boolean>(true);
+  const { login } = useAuth();
 
   const handleEmailChange = (text: string) => {
     setEmail(text);
@@ -54,6 +56,7 @@ const LoginScreen = () => {
       .post(`${Endpoints.urlAuth}/login`, data)
       .then((response) => {
         console.log(response.data);
+        login(response.data);
       })
       .catch((error) => {
         console.log(error);
