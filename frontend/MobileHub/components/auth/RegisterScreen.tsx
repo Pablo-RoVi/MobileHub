@@ -36,7 +36,7 @@ const RegisterScreen = () => {
   const [nameError, setNameError] = useState<boolean>(false);
   const [birthYearError, setBirthYearError] = useState<boolean>(false);
   const [rutError, setRutError] = useState<boolean>(false);
-  const [validForm, setValidForm] = useState<boolean>(false);
+  const [registerError, setRegisterError] = useState<boolean>(false);
 
   const handleEmailChange = (text: string) => {
     if (!RegularExpressions.emailRegex.test(text)) {
@@ -107,11 +107,10 @@ const RegisterScreen = () => {
     axios
       .post(`${Endpoints.urlAuth}/register`, data)
       .then((response) => {
-        console.log(response.data);
         login(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        setRegisterError(true);
       })
       .finally(() => {});
   };
@@ -161,14 +160,12 @@ const RegisterScreen = () => {
         mode={"outlined"}
         error={rutError}
       />
-      <HelperText type="error" visible={false}>
+      <HelperText type="error" visible={registerError}>
         Credenciales inválidas
       </HelperText>
-      <Link href="/home/" asChild replace={true}>
-        <Button style={styles.button} mode="contained" onPress={handleSubmit}>
-          Registrar
-        </Button>
-      </Link>
+      <Button style={styles.button} mode="contained" onPress={handleSubmit}>
+        Registrar
+      </Button>
     </SafeAreaView>
   );
 };

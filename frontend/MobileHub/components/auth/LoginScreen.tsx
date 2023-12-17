@@ -28,6 +28,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [hidePassword, setHidePassword] = useState<boolean>(true);
+  const [loginError, setLoginError] = useState<boolean>(false);
   const { login } = useAuth();
 
   const handleEmailChange = (text: string) => {
@@ -55,11 +56,10 @@ const LoginScreen = () => {
     axios
       .post(`${Endpoints.urlAuth}/login`, data)
       .then((response) => {
-        console.log(response.data);
         login(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        setLoginError(true);
       });
   };
 
@@ -93,14 +93,12 @@ const LoginScreen = () => {
           />
         }
       />
-      <HelperText type="error" visible={false}>
+      <HelperText type="error" visible={loginError}>
         Credenciales inválidas
       </HelperText>
-      <Link href="/home/" asChild replace={true}>
-        <Button style={styles.button} mode="contained" onPress={handleSubmit}>
-          Iniciar Sesión
-        </Button>
-      </Link>
+      <Button style={styles.button} mode="contained" onPress={handleSubmit}>
+        Iniciar Sesión
+      </Button>
     </SafeAreaView>
   );
 };
