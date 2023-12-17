@@ -28,7 +28,7 @@ These instructions will help you set up and run the project on your local machin
 ## Start backend
 1. Restore dependencies
    ```bash
-   cd backend/MobileHub
+   cd MobileHub/backend/MobileHub
    dotnet restore
    ```
 
@@ -46,24 +46,41 @@ These instructions will help you set up and run the project on your local machin
       }
    ```
 
-3. Make the migrations
+3. Configure launchSettings.json
+   - Change localhost to your IPv4 Direction
+   ```bash
+      "profiles": {
+         "http": {
+            "commandName": "Project",
+            "dotnetRunMessages": true,
+            "launchBrowser": true,
+            "launchUrl": "swagger",
+            "applicationUrl": "http://localhost:5071",
+            "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+         },
+      }
+   ```
+
+4. Make the migrations
    ```bash
     dotnet ef database update
    ```
 
-4. Build the project
+5. Build the project
    ```bash
     dotnet build
    ```
 
-5. Start the application
+6. Start the application
    ```bash
     dotnet run
    ```
 
 ## Start frontend
 
-- Install dependencies:
+- First of all, create another terminal to still running backend, then install dependencies:
    ```bash
    cd frontend/MobileHub
    npm install
@@ -73,11 +90,7 @@ These instructions will help you set up and run the project on your local machin
 
 1. Start the Expo development server:
    ```bash
-   expo start
+   npx expo start
    ```
 
 2. Scan the QR code with the Expo Go app on your device, or run the app on an emulator.
-
-### Additional Configuration
-
-- Add any additional steps or configuration instructions here.
