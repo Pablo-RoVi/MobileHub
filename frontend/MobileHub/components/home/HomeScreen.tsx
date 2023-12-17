@@ -1,6 +1,6 @@
-import { ActivityIndicator, Button, Card, Text } from 'react-native-paper';
+import { ActivityIndicator, Button, Card, Modal, Text, Dialog } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Repository } from '../../models/Respository';
 import { Commit } from "../../models/Commit";
 import React, { useEffect, useState } from 'react';
@@ -34,7 +34,20 @@ const styles = StyleSheet.create({
         width: "100%",
         margin: 0,
         padding: 0,
-    }
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    modalContent: {
+        backgroundColor: "white",
+        padding: 22,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 4,
+        borderColor: "rgba(0, 0, 0, 0.1)",
+    },
 });
 
 const HomeScreen = () => {
@@ -45,6 +58,23 @@ const HomeScreen = () => {
     
     const urlRepositories = "http://192.168.0.11:5071/repositories"
     const urlCommits = "http://192.168.0.11:5071/commits"
+    const [visible, setVisible] = React.useState(false);
+
+    const hideDialog = () => setVisible(false);
+
+    const getCommits = (repositoryName: string) => {
+        setLoading(true);
+        axios.get(`${urlCommits}/${repositoryName}`)
+        .then((response) => {
+            setCommits(response.data);
+        })
+        .catch((error) => { 
+            console.log(error);
+        })
+        .finally(() => {
+            setLoading(false);
+        });
+    }
 
     useEffect(() => {
         setLoading(true);
@@ -59,6 +89,7 @@ const HomeScreen = () => {
             setLoading(false);
         });
     }, []);
+    
 
     if (loading) {
         return (
@@ -93,7 +124,10 @@ const HomeScreen = () => {
                             </Card.Content>
                             <Card.Actions>
                                 <Button
-                                    onPress={() => console.log("Ver más pressed")}
+                                    onPress={() => {
+                                        getCommits(repository.name)
+                                        setVisible(true)
+                                    }}
                                     mode={"contained"}
                                 >Ver más
                                 </Button>
@@ -101,6 +135,29 @@ const HomeScreen = () => {
                         </Card>
                     ))}
                 </ScrollView>
+                <Dialog visible={visible} onDismiss={hideDialog}>
+                    <Dialog.Title>Commits</Dialog.Title>
+                    <ScrollView style={styles.scrollView}>
+                        <Dialog.Content>
+                            {commits.map((commit, index) => (
+                                <Card style={styles.card} key={index}>
+                                    <Card.Title 
+                                        title={commit.author} 
+                                        titleVariant={"headlineSmall"}
+                                    />
+                                    <Card.Content>
+                                        <Text variant={"bodyMedium"}>
+                                            Commits: {commit.commit}
+                                        </Text>
+                                        <Text variant={"bodyMedium"}>
+                                            Creado el: {commit.createdAt.split("T")[0]}
+                                        </Text>
+                                    </Card.Content>
+                                </Card>
+                            ))}
+                        </Dialog.Content>
+                    </ScrollView>
+                </Dialog>
             </SafeAreaView>
         </>
     );
