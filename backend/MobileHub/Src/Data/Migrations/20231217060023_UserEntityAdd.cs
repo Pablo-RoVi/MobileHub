@@ -19,8 +19,8 @@ namespace MobileHub.Src.Data.Migrations
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     BirthYear = table.Column<int>(type: "INTEGER", nullable: false),
                     Rut = table.Column<string>(type: "TEXT", nullable: false),
-                    Password = table.Column<string>(type: "TEXT", nullable: false),
-                    PasswordSalt = table.Column<string>(type: "TEXT", nullable: false)
+                    FullName = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -10,7 +10,7 @@ using MobileHub.Src.Data;
 namespace MobileHub.Src.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231217034201_UserEntityAdd")]
+    [Migration("20231217060023_UserEntityAdd")]
     partial class UserEntityAdd
     {
         /// <inheritdoc />
@@ -32,11 +32,11 @@ namespace MobileHub.Src.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PasswordSalt")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

@@ -10,7 +10,6 @@ namespace MobileHub.Src.DTOs
         public string Email { get; set; } = string.Empty;
 
         [Required]
-        [Rut(ErrorMessage = "Rut is not valid")]
         public string Rut { get; set; } = string.Empty;
         
         [Required]
