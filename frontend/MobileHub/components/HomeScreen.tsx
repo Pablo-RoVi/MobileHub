@@ -9,6 +9,7 @@ import { StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, Text } from "react-native-paper";
 import { Link } from "expo-router";
+import { useAuth } from "../context/AuthContext";
 
 /**
  * Styles for the HomeScreen component.
@@ -37,11 +38,16 @@ const styles = StyleSheet.create({
  * It includes a welcome message, logo, and buttons to navigate to the login and register screens.
  */
 const HomeScreen = () => {
+  /**
+   * Get the user from the AuthContext.
+   * @type {object} - User object.
+   */
+  const { user } = useAuth();
   // Render the HomeScreen component
   return (
     <SafeAreaView style={styles.container}>
       {/* Welcome message */}
-      <Text variant="displayMedium">¡BIENVENID@!</Text>
+      <Text variant="displayMedium">¡BIENVENID@ {user?.fullName}!</Text>
 
       {/* Application logo */}
       <Image
@@ -53,7 +59,6 @@ const HomeScreen = () => {
       <Link href="/auth/login" asChild>
         <Button
           mode="contained"
-          onPress={() => console.log("Login")}
           style={styles.button}
         >
           Iniciar Sesión
@@ -64,7 +69,6 @@ const HomeScreen = () => {
       <Link href="/auth/register" asChild>
         <Button
           mode="outlined"
-          onPress={() => console.log("Register")}
           style={styles.button}
         >
           Registrarse
