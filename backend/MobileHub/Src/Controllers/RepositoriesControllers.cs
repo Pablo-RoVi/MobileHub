@@ -31,7 +31,7 @@ namespace MobileHub.Controllers
                     Name = r.Name,
                     CreatedAt = r.CreatedAt,
                     UpdatedAt = r.UpdatedAt,
-                    CommitsAmout = commitsResult[index]
+                    CommitsAmount = commitsResult[index]
                 };
                 return entity;
             });

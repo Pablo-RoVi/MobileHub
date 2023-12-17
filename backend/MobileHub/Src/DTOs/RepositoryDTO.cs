@@ -14,6 +14,6 @@ namespace MobileHub.DTOs
 
         public DateTimeOffset UpdatedAt { get; set; } = DateTime.Now;
 
-        public int CommitsAmout { get; set; }
+        public int CommitsAmount { get; set; }
     }
 }
