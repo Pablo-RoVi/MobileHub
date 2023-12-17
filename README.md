@@ -11,11 +11,9 @@ These instructions will help you set up and run the project on your local machin
 
 ### Prerequisites
 
-- Node.js: [Download and install Node.js](https://nodejs.org/)
-- Expo CLI: Install globally using the following command:
-  ```bash
-  npm install -g expo-cli
-  ```
+- Node.js v18.17.1
+- .NET 7
+- Expo CLI
 - Expo Go app: Install on your iOS or Android device from the [App Store](https://apps.apple.com/us/app/expo-go/id982107779) or [Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent).
 
 ### Installing
