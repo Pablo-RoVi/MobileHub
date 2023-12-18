@@ -9,7 +9,12 @@ const primaryOrange = "#fcaf43";
 // White color
 const white = "#ffffff";
 
-// Object containing color constants
+/**
+ * Object containing all the colors used in the application.
+ * @type {Object}
+ * @property {string} primaryOrange - Primary color for the application
+ * @property {string} white - White color
+ */
 const colors = {
   primaryOrange,
   white,

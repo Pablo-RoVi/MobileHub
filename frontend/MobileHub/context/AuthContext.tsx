@@ -2,7 +2,15 @@
 
 import React, { createContext, useContext, ReactNode, useState } from 'react';
 
-// Define the shape of the user object
+/**
+ * The User interface defines the shape of the user object
+ * @param token The user token
+ * @param email The user email
+ * @param birthYear The user birth year
+ * @param rut The user rut
+ * @param fullName The user full name
+ * @returns The User object
+ */
 export interface User {
     token: string;
   email: string;
@@ -11,7 +19,13 @@ export interface User {
   fullName: string;
 }
 
-// Define the shape of the context
+/**
+ * The AuthContextType interface defines the shape of the context object
+ * @param user The user object
+ * @param login The function to set the logged-in user
+ * @param logout The function to clear the user (logout)
+ * @returns The AuthContextType object
+ */
 interface AuthContextType {
   user: User | null;
   login: (userData: User) => void;
@@ -30,11 +44,20 @@ const useAuthContext = () => {
   return context;
 };
 
-// Define a provider component
+/**
+ * The AuthProviderProps interface defines the props for the AuthProvider component
+ * @param children The children of the component
+ * @returns The AuthProvider children component
+ */
 interface AuthProviderProps {
   children: ReactNode;
 }
 
+/**
+ * The AuthProvider component provides the user object and functions to login and logout
+ * @param param0 The children of the component
+ * @returns The AuthProvider component
+ */
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
@@ -48,12 +71,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser(null);
   };
 
+  // Define the context value
   const contextValue: AuthContextType = {
     user,
     login,
     logout,
   };
 
+  // Return the provider component
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };
 

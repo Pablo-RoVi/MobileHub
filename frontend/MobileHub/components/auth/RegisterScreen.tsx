@@ -8,6 +8,11 @@ import Endpoints from "../../constants/Endpoints";
 import { useAuth } from "../../context/AuthContext";
 import { router } from "expo-router";
 
+/**
+ * Styles specific to this screen.
+ * @param {string} text - Text from the password field.
+ * @returns The LoginScreen component
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -25,19 +30,29 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * Functional component representing the register screen.
+ * @returns The LoginScreen component
+ */
 const RegisterScreen = () => {
+  // Local states for email, password, password visibility, and login error handling.
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [birthYear, setBirthYear] = useState<string>("");
   const [rut, setRut] = useState<string>("");
   const { login } = useAuth();
 
+  // Error handling
   const [emailError, setEmailError] = useState<boolean>(false);
   const [nameError, setNameError] = useState<boolean>(false);
   const [birthYearError, setBirthYearError] = useState<boolean>(false);
   const [rutError, setRutError] = useState<boolean>(false);
   const [registerError, setRegisterError] = useState<boolean>(false);
 
+  /**
+   * Change handler for the email field.
+   * @param text - Text from the email field.
+   */
   const handleEmailChange = (text: string) => {
     if (!RegularExpressions.emailRegex.test(text)) {
       setEmailError(true);
@@ -47,6 +62,10 @@ const RegisterScreen = () => {
     setEmail(text);
   };
 
+  /**
+   * Change handler for the name field.
+   * @param text - Text from the name field.
+   */
   const handleNameChange = (text: string) => {
     if (!RegularExpressions.nameRegex.test(text)) {
       setNameError(true);
@@ -56,6 +75,10 @@ const RegisterScreen = () => {
     setName(text);
   };
 
+  /**
+   * Change handler for the birth year field.
+   * @param text - Text from the birth year field.
+   */
   const handleBirthYearChange = (text: string) => {
     if (!RegularExpressions.birthYearRegex.test(text)) {
       setBirthYearError(true);
@@ -75,6 +98,10 @@ const RegisterScreen = () => {
     setBirthYear(text);
   };
 
+  /**
+   * Change handler for the rut field.
+   * @param text - Text from the rut field.
+   */
   const handleRutChange = (text: string) => {
     if (!RegularExpressions.rutRegex.test(text)) {
       setRutError(true);
@@ -84,6 +111,10 @@ const RegisterScreen = () => {
     setRut(text);
   };
 
+  /**
+   * Form submission handler for the login form.
+   * @returns The LoginScreen component if the form is invalid.
+   */
   const handleSubmit = () => {
     if (emailError || nameError || birthYearError || rutError) {
       return;
@@ -91,6 +122,13 @@ const RegisterScreen = () => {
     sendData(email, name, birthYear, rut);
   };
 
+  /**
+   * Send register data to the server.
+   * @param email The user email
+   * @param fullName The user full name
+   * @param birthYear The user birth year
+   * @param rut The user rut
+   */
   const sendData = (
     email: string,
     fullName: string,
@@ -117,6 +155,9 @@ const RegisterScreen = () => {
       .finally(() => {});
   };
 
+  /**
+   * Render the register screen component.
+   */
   return (
     <SafeAreaView style={styles.container}>
       <Text variant="displayMedium">Registrarse</Text>

@@ -15,7 +15,14 @@ const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s']{10,150}$/;
 // Regular expression for validating birth years (1900 to 2099)
 const birthYearRegex = /^(19|20)\d{2}$/;
 
-// Object containing regular expressions
+/**
+ * Object containing all the regular expressions used in the application.
+ * @type {Object}
+ * @property {RegExp} emailRegex - Regular expression for validating email addresses
+ * @property {RegExp} rutRegex - Regular expression for validating Chilean RUT (Rol Único Tributario)
+ * @property {RegExp} nameRegex - Regular expression for validating names (10 to 150 characters, allowing specific characters)
+ * @property {RegExp} birthYearRegex - Regular expression for validating birth years (1900 to 2099)
+ */
 const RegularExpressions = {
   emailRegex,
   rutRegex,
