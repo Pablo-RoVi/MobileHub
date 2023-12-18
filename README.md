@@ -1,9 +1,8 @@
-```markdown
 # MobileHub
 
 ## Description
 
-Briefly describe your project here.
+An Expo Go project that uses the GitHub API to view a user's repositories with corresponding commits.
 
 ## Getting Started
 
@@ -15,6 +14,7 @@ These instructions will help you set up and run the project on your local machin
 - .NET 7
 - Expo CLI
 - Expo Go app: Install on your iOS or Android device from the [App Store](https://apps.apple.com/us/app/expo-go/id982107779) or [Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent).
+- Your computer and cell phone must be connected to the same internet.
 
 ### Installing
 
