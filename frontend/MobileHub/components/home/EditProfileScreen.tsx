@@ -3,15 +3,16 @@
  * @description Edit profile screen of the application.
  * This screen allows users to edit their profile information.
  */
-import { Text } from "react-native-paper";
+import { HelperText, Text, Appbar, Button, TextInput } from "react-native-paper";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet, View } from "react-native";
-import { Appbar, Button, TextInput } from "react-native-paper";
 import { router } from "expo-router";
 import colors from "../../constants/Colors";
 import RegularExpressions from "../../constants/RegularExpressions";
 import { useAuth } from "../../context/AuthContext";
+import axios from "axios";
+import Endpoints from "../../constants/Endpoints";
 
 /**
  * Styles for the EditProfileScreen component.
@@ -34,8 +35,13 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * Functional component representing the edit profile screen.
+ * @returns The EditProfileScreen component
+ */
 const EditProfile = () => {
-  const { user } = useAuth();
+  // Local states for email, password, password visibility, and login error handling.
+  const { user, login } = useAuth();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [birthYear, setBirthYear] = useState<string>("");
@@ -45,10 +51,21 @@ const EditProfile = () => {
   const [hideNewPassword, setHideNewPassword] = useState(true);
   const [editOption, setEditOption] = useState<boolean>(true);
 
+  // Error handling
   const [emailError, setEmailError] = useState<boolean>(false);
   const [nameError, setNameError] = useState<boolean>(false);
   const [birthYearError, setBirthYearError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [isEmpty, setIsEmpty] = useState<boolean>(false);
 
+  // Success handling
+  const [successUser, setUserSuccess] = useState<boolean>(false);
+  const [successPassword, setPasswordSuccess] = useState<boolean>(false);
+
+  /**
+   * Handles the change of the email field.
+   * @param text - Text from the email field.
+   */
   const handleEmailChange = (text: string) => {
     if (!RegularExpressions.emailRegex.test(text)) {
       setEmailError(true);
@@ -58,6 +75,10 @@ const EditProfile = () => {
     setEmail(text);
   };
 
+  /**
+   * Handles the change of the name field.
+   * @param text - Text from the name field.
+   */
   const handleNameChange = (text: string) => {
     if (!RegularExpressions.nameRegex.test(text)) {
       setNameError(true);
@@ -67,6 +88,10 @@ const EditProfile = () => {
     setName(text);
   };
 
+  /**
+   * Handles the change of the birth year field.
+   * @param text - Text from the birth year field.
+   */
   const handleBirthYearChange = (text: string) => {
     if (!RegularExpressions.birthYearRegex.test(text)) {
       setBirthYearError(true);
@@ -86,22 +111,40 @@ const EditProfile = () => {
     setBirthYear(text);
   };
 
+  /**
+   * Handles the change of the password field.
+   * @param text - Text from the password field.
+   */
   const handlePasswordChange = (text: string) => {
     setPassword(text);
   };
 
+  /**
+   * Handles the change of the new password field.
+   * @param text - Text from the new password field.
+   */
   const handleNewPasswordChange = (text: string) => {
     setNewPassword(text);
   };
 
+  /**
+   * Handles the visibility of the password field.
+   */
   const handleHidePassword = () => {
     sethidePassword(!hidePassword);
   };
 
+  /**
+   * Handles the visibility of the new password field.
+   */
   const handleHideNewPassword = () => {
     setHideNewPassword(!hideNewPassword);
   };
 
+  /**
+   * Returns the buttons to select the edit option.
+   * @returns The buttons to select the edit option.
+   */
   const optionsButtons = () => {
     return (
       <View style={{ flexDirection: "row" }}>
@@ -119,14 +162,78 @@ const EditProfile = () => {
     );
   };
 
+  /**
+   * Updates the user profile.
+   * @returns The updated user profile.
+   */
   const updateProfile = () => {
+    setUserSuccess(false);
     
+    if (nameError || emailError || birthYearError) {
+      return;
+    }
+
+    const data = {
+      fullName: name,
+      email: email,
+      birthYear: parseInt(birthYear),
+    };
+    axios.put(`${Endpoints.urlUser}/update-user/${user?.rut}`, data)
+      .then((response) => {
+        login(response.data);
+        setName(response.data.fullName);
+        setEmail(response.data.email);
+        setBirthYear(response.data.birthYear.toString());
+        setUserSuccess(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
+  /**
+   * Updates the user password.
+   * @returns The updated user password.
+   */
   const updatePassword = () => {
-    console.log("Update password");
+    setPasswordSuccess(false);
+
+    if (password === "" || newPassword === "") {
+      setPassword("")
+      setNewPassword("")
+      setIsEmpty(true);
+      console.log("Hay campos vacíos");
+      return;
+    }
+
+    const data = {
+      password: password,
+      newPassword: newPassword,
+    };
+    axios
+      .post(`${Endpoints.urlAuth}/login`, {email: user?.email, password: password})
+      .catch((error) => {
+        setPasswordError(true);
+        console.log("Contraseña incorrecta");
+      });
+
+    if (passwordError) {
+      axios.put(`${Endpoints.urlUser}/update-password/${user?.rut}`, data)
+      .then((response) => {
+        setPasswordSuccess(true);
+        console.log("Contraseña actualizada");
+      })
+      .catch((error) => {
+        setPasswordError(true);
+      });
+    }
+    setPassword("");
+    setNewPassword("");
   };
 
+  /**
+   * Clears all the changes made by the user.
+   */
   const clearChanges = () => {
     setName(user?.fullName || "");
     setEmail(user?.email || "");
@@ -136,14 +243,22 @@ const EditProfile = () => {
     setEmailError(false);
     setNameError(false);
     setBirthYearError(false);
+    setUserSuccess(false);
   };
 
+  /**
+   * Sets the initial values of the fields.
+   */
   useEffect(() => {
     setName(user?.fullName || "");
     setEmail(user?.email || "");
     setBirthYear(user?.birthYear.toString() || "");
   }, []);
 
+  /**
+   * Returns the edit info component.
+   * @returns The edit info component.
+   */
   const editInfo = () => {
     return (
       <>
@@ -180,13 +295,17 @@ const EditProfile = () => {
           keyboardType="numeric"
           error={birthYearError}
         />
-        <Button mode="contained" onPress={() => updateProfile}>
+        <Button mode="contained" style={{marginTop: 20 }} onPress={() => updateProfile()}>
           Actualizar información
         </Button>
       </>
     );
   };
 
+  /**
+   * Returns the edit password component.
+   * @returns The edit password component.
+   */
   const editPassword = () => {
     return (
       <>
@@ -225,13 +344,49 @@ const EditProfile = () => {
             />
           }
         />
-        <Button mode="contained" onPress={() => updatePassword}>
+        <Button mode="contained" onPress={() => updatePassword()}>
           Actualizar contraseña
         </Button>
       </>
     );
   };
 
+  /**
+   * Returns the success message for the user.
+   */
+  const showSuccesUser = () => {
+    return (
+      <HelperText type="info" visible={successUser}>
+        Información actualizada
+      </HelperText>
+    );
+  }
+
+  /**
+   * Returns the success message for the password.
+   */
+  const showSuccesPassword = () => {
+    return (
+      <HelperText type="info" visible={successUser}>
+        Contraseña actualizada
+      </HelperText>
+    );
+  }
+
+  /**
+   * Returns the empty message.
+   */
+  const showEmpty = () => {
+    return (
+      <HelperText type="info" visible={successUser}>
+        No hay nada que actualizar
+      </HelperText>
+    );
+  }
+
+  /**
+   * Returns the edit profile screen component.
+   */
   return (
     <>
       <Appbar.Header style={styles.appbar}>
@@ -252,6 +407,9 @@ const EditProfile = () => {
         <Button mode="contained" onPress={() => clearChanges()}>
           Cancelar
         </Button>
+        {successUser && editOption ? showSuccesUser() : null}
+        {successPassword && !editOption ? showSuccesPassword() : null}
+        {isEmpty && !editOption ? showEmpty() : null}
       </SafeAreaView>
     </>
   );
