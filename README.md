@@ -37,14 +37,14 @@ These instructions will help you set up and run the project on your local machin
     GITHUB_ACCESS_USER=YOUR_GITHUB_ACCESS_USER
     LOCAL_IP=http://localhost:8081
    ```
-   - Change appsettings.example.json to appsettings.json and put your 256bits ultra secret token
+3. Change appsettings.example.json to appsettings.json and put your 256bits ultra secret token
    ```bash
       "AppSettings": {
          "Token": "your_ultra_secret_token"
       }
    ```
 
-3. Configure launchSettings.json
+4. Configure launchSettings.json
    - Change localhost to your IPv4 Direction
    ```bash
       "profiles": {
@@ -61,17 +61,17 @@ These instructions will help you set up and run the project on your local machin
       }
    ```
 
-4. Make the migrations
+5. Make the migrations
    ```bash
     dotnet ef database update
    ```
 
-5. Build the project
+6. Build the project
    ```bash
     dotnet build
    ```
 
-6. Start the application
+7. Start the application
    ```bash
     dotnet run
    ```
@@ -82,6 +82,12 @@ These instructions will help you set up and run the project on your local machin
    ```bash
    cd frontend/MobileHub
    npm install
+   ```
+
+- Configure Endpoints.ts
+   - Put your IPv4 Direction instead localhost
+   ```bash
+    const url = "http://localhost:5071";
    ```
 
 ### Running the App

@@ -1,18 +1,22 @@
-// Expo file managing API endpoints
+// File: Endpoints.ts
 
 // Base URL for API requests
-const url = "http://192.168.0.8:5071";
+const url = "http://localhost:5071";
 
 // Authentication-specific endpoint URL
 const urlAuth = `${url}/api/Auth`;
+
+// User-related endpoint URL
+const urlUser = `${url}/api/Users`;
 
 /**
  * Endpoints for the API
  */
 const Endpoints = {
-    url,
-    urlAuth,
-}
+  url,        // Base URL for general API requests
+  urlAuth,    // Authentication-specific endpoint URL
+  urlUser,    // User-related endpoint URL
+};
 
 /**
  * Export the endpoints
