@@ -1,3 +1,8 @@
+/**
+ * @file RegisterScreen.tsx
+ * @description Register screen of the application.
+ * This screen allows users to register by entering their email and password.
+ */
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,9 +14,8 @@ import { useAuth } from "../../context/AuthContext";
 import { router } from "expo-router";
 
 /**
- * Styles specific to this screen.
- * @param {string} text - Text from the password field.
- * @returns The LoginScreen component
+ * Styles for the RegisterScreen component.
+ * @type {object} - CSS RegisterScreen properties.
  */
 const styles = StyleSheet.create({
   container: {

@@ -1,9 +1,8 @@
 /**
- * File: HomeScreen.js
- * Description: React component representing the home screen of the application.
- * It includes a welcome message, logo, and buttons to navigate to the login and register screens.
+ * @file HomeScreen.tsx
+ * @description Home screen of the application.
+ * This screen allows users to view their repositories and commits.
  */
-
 import React from "react";
 import { StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";

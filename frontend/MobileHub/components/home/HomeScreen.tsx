@@ -1,6 +1,7 @@
 /**
- * `HomeScreen` component displays a list of repositories and their associated commits.
- * It fetches data from an API endpoint and renders the information in a user-friendly manner.
+ * @file HomeScreen.tsx
+ * @description Home screen of the application.
+ * This screen allows users to view their repositories and commits.
  */
 import {
   ActivityIndicator,

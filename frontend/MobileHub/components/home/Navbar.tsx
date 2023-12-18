@@ -1,9 +1,8 @@
 /**
- * File: Navbar.js
- * Description: React component representing the navigation bar.
- * It includes an Appbar with a menu and options to navigate within the application.
+ * @file Navbar.tsx
+ * @description Navbar component of the application.
+ * This component represents the navigation bar of the application.
  */
-
 import React, { useState } from "react";
 import { Appbar, Menu } from "react-native-paper";
 import { StyleSheet } from "react-native";

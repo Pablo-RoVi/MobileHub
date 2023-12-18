@@ -1,3 +1,8 @@
+/**
+ * @file EditProfileScreen.tsx
+ * @description Edit profile screen of the application.
+ * This screen allows users to edit their profile information.
+ */
 import { Text } from "react-native-paper";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,6 +13,10 @@ import colors from "../../constants/Colors";
 import RegularExpressions from "../../constants/RegularExpressions";
 import { useAuth } from "../../context/AuthContext";
 
+/**
+ * Styles for the EditProfileScreen component.
+ * @type {object} - CSS EditProfileScreen properties.
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -111,7 +120,7 @@ const EditProfile = () => {
   };
 
   const updateProfile = () => {
-    console.log("Update profile");
+    
   };
 
   const updatePassword = () => {

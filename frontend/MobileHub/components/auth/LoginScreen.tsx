@@ -13,7 +13,8 @@ import { useAuth } from "../../context/AuthContext";
 import { router } from "expo-router";
 
 /**
- * Styles specific to this screen.
+ * Styles for the LoginScreen component.
+ * @type {object} - CSS LoginScreen properties.
  */
 const styles = StyleSheet.create({
   container: {
