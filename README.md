@@ -84,7 +84,7 @@ These instructions will help you set up and run the project on your local machin
    npm install
    ```
 
-- Configure Endpoints.ts
+- Configure Endpoint.ts which is located in the constants folder
    - Put your IPv4 Direction instead localhost
    ```bash
     const url = "http://localhost:5071";
